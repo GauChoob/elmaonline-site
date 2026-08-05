@@ -143,7 +143,7 @@ export const getTimes = async (LevelIndex, KuskiIndex, limit, LoggedIn = 0) => {
       include: includeLegacy,
     });
     return [...times, ...legacyTimes]
-      .sort((a, b) => a.Time - b.Time)
+      .sort((a, b) => a.Time - b.Time || a.Driven - b.Driven)
       .slice(0, parseInt(limit, 10));
   }
   return times;
