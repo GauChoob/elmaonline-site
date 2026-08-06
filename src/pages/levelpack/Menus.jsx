@@ -176,7 +176,9 @@ const Menus = ({ name, hideFilter }) => {
                       <RadioGroup
                         aria-label="highlightWeeks"
                         value={highlightWeeks}
-                        onChange={n => setHighlightWeeks(n.target.value)}
+                        onChange={n =>
+                          setHighlightWeeks(Number(n.target.value))
+                        }
                         name="weeks"
                         row
                       >
