@@ -114,13 +114,30 @@ export const getTimes = async (LevelIndex, KuskiIndex, limit, LoggedIn = 0) => {
     ];
   }
 
+  const attributes = ['TimeIndex', 'Time', 'Apples', 'Driven', 'FPSLimit'];
+
+  if (personal) {
+    attributes.push(
+      'Finished',
+      'BattleIndex',
+      'MaxSpeed',
+      'ThrottleTime',
+      'BrakeTime',
+      'LeftVolt',
+      'RightVolt',
+      'SuperVolt',
+      'Turn',
+      'OneWheel',
+    );
+  }
+
   const times = await AllFinished.findAll({
     where: { LevelIndex, KuskiIndex },
     order: [
       ['Time', 'ASC'],
       ['TimeIndex', 'ASC'],
     ],
-    attributes: ['TimeIndex', 'Time', 'Apples', 'Driven'],
+    attributes,
     limit: timeLimit > 10000 ? 10000 : timeLimit,
     include,
   });
