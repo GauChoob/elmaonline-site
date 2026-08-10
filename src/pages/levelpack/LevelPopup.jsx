@@ -8,6 +8,7 @@ import LevelMap from 'features/LevelMap';
 import Header from 'components/Header';
 import Link from 'components/Link';
 import LegacyIcon from 'components/LegacyIcon';
+import LocalTime from 'components/LocalTime';
 import { ListCell, ListContainer, ListHeader, ListRow } from 'components/List';
 import { FixedSizeList as List } from 'react-window';
 import useElementSize from 'utils/useWindowSize';
@@ -101,7 +102,8 @@ const LevelPopup = ({
                   <ListCell width={176}>Kuski</ListCell>
                 </>
               )}
-              <ListCell>Time</ListCell>
+              <ListCell width={!multi ? 140 : undefined}>Time</ListCell>
+              {!multi && <ListCell>Driven</ListCell>}
               {times.length > 0 && times[0].Source !== undefined && (
                 <ListCell />
               )}
@@ -150,8 +152,18 @@ const LevelPopup = ({
                             <ListCell width={220}>
                               <Kuski kuskiData={t.KuskiData} team flag />
                             </ListCell>
-                            <ListCell highlight={t.TimeIndex >= highlight}>
+                            <ListCell
+                              highlight={t.TimeIndex >= highlight}
+                              width={140}
+                            >
                               <Time time={t.Time} />
+                            </ListCell>
+                            <ListCell width={110}>
+                              <LocalTime
+                                date={t.Driven}
+                                format="d MMM yyyy"
+                                parse="X"
+                              />
                             </ListCell>
                             {t.Source !== undefined && (
                               <ListCell right>
@@ -182,8 +194,18 @@ const LevelPopup = ({
                     <div style={style} key={`${t.TimeIndex}${t.Time}`}>
                       <ListRow>
                         <ListCell width={40}>{index + 1}.</ListCell>
-                        <ListCell highlight={t.TimeIndex >= highlight}>
+                        <ListCell
+                          highlight={t.TimeIndex >= highlight}
+                          width={140}
+                        >
                           <Time time={t.Time} />
+                        </ListCell>
+                        <ListCell width={110}>
+                          <LocalTime
+                            date={t.Driven}
+                            format="d MMM yyyy"
+                            parse="X"
+                          />
                         </ListCell>
                         {t.Source !== undefined && (
                           <ListCell right>
