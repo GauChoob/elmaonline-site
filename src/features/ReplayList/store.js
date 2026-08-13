@@ -20,6 +20,8 @@ export default {
         pageSize: payload.pageSize,
         tags: payload.tags,
         excludedTags: payload.excludedTags,
+        sortBy: payload.sortBy,
+        order: payload.order,
       });
     } else if (payload.uploadedBy) {
       get = await ReplayUploadedBy(payload.uploadedBy, {
@@ -27,6 +29,8 @@ export default {
         pageSize: payload.pageSize,
         tags: payload.tags,
         excludedTags: payload.excludedTags,
+        sortBy: payload.sortBy,
+        order: payload.order,
       });
     } else {
       get = await Replays(payload);
