@@ -159,7 +159,9 @@ const Replay = () => {
   const updateUrl = (unmerge = false, recUuid) => {
     if (unmerge) {
       return merge?.includes(';')
-        ? `${location.pathname}?merge=${merge.replace(`;${recUuid}`, '')}`
+        ? merge.startsWith(`${recUuid};`)
+          ? `${location.pathname}?merge=${merge.replace(`${recUuid};`, '')}`
+          : `${location.pathname}?merge=${merge.replace(`;${recUuid}`, '')}`
         : location.pathname;
     }
     return merge

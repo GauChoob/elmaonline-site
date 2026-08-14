@@ -27,7 +27,9 @@ const RecListItem = ({
   const updateUrl = (unmerge = false) => {
     if (unmerge) {
       return merge?.includes(';')
-        ? `${location.pathname}?merge=${merge.replace(`;${replay.UUID}`, '')}`
+        ? merge.startsWith(`${replay.UUID};`)
+          ? `${location.pathname}?merge=${merge.replace(`${replay.UUID};`, '')}`
+          : `${location.pathname}?merge=${merge.replace(`;${replay.UUID}`, '')}`
         : location.pathname;
     }
     return merge
