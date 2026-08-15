@@ -119,8 +119,8 @@ const getTimes = async () => {
   return data;
 };
 
-const deleteTimeFiles = async (max, min) => {
-  const query = `
+const deleteTimeFiles = async (max, min, excludeTimeIndexes = []) => {
+  let query = `
     DELETE timefile FROM timefile
     INNER JOIN time ON time.TimeIndex = timefile.TimeIndex
     WHERE timefile.TimeFileIndex >= ? AND timefile.TimeFileIndex <= ?
@@ -128,8 +128,21 @@ const deleteTimeFiles = async (max, min) => {
     AND timefile.BattleIndex = 0
     AND time.Finished IN ('E', 'D')
   `;
-  await dbquery(query, [min, max]);
+  const params = [min, max];
+  if (excludeTimeIndexes.length > 0) {
+    query += ` AND timefile.TimeIndex NOT IN (${excludeTimeIndexes.map(() => '?').join(',')})`;
+    params.push(...excludeTimeIndexes);
+  }
+  await dbquery(query, params);
   return;
+};
+
+const getCupTimes = async (min, max) => {
+  const query = `
+    SELECT TimeIndex FROM sitecuptime WHERE TimeIndex >= ? AND TimeIndex <= ?
+  `;
+  const data = await dbquery(query, [min, max]);
+  return data;
 };
 
 // moves unfinished auto uploaded replays to cold storage
@@ -185,6 +198,10 @@ export const coldStorage = async () => {
   // clean up
   await fs.promises.unlink(zip);
   if (!putError) {
+    // get cup times to exclude from deletion
+    const cupTimes = await getCupTimes(first, last);
+    const cupTimeIndexSet = new Set(cupTimes.map(row => row.TimeIndex));
+
     // delete unfinished and unshared times from digital ocean s3
     const deleteParams = times
       .filter(
@@ -192,7 +209,8 @@ export const coldStorage = async () => {
           !!entity.file &&
           entity.time.Shared === 0 &&
           ['E', 'D'].indexOf(entity.time['Time.Finished']) > -1 &&
-          !entity.time.BattleIndex,
+          !entity.time.BattleIndex &&
+          !cupTimeIndexSet.has(entity.time.TimeIndex),
       )
       .map(entity => ({ Key: entity.path.Key }));
     const deleteParamsChunks = [];
@@ -206,7 +224,7 @@ export const coldStorage = async () => {
       deleteParamsChunks.map(files => DO_s3DeleteObjects(files)),
     );
     // delete unfinished and unshared times from timefile table
-    await deleteTimeFiles(last, first);
+    await deleteTimeFiles(last, first, Array.from(cupTimeIndexSet));
     // update last cold storage TimeFileIndex for next update
     await SiteSetting.update(
       { Setting: last },
