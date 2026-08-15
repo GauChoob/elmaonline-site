@@ -9,6 +9,10 @@ import { updateRanking, deleteRanking } from '#utils/ranking';
 import { email, legacyTimes, orderLevels } from '#utils/dataImports';
 import { recapGenerate } from '#utils/recap';
 import { coldStorage, recoverRecFiles } from '#utils/timefile';
+import {
+  populateLevelPackStats,
+  populateAllLevelPackStats,
+} from '#utils/levelpackstats';
 
 const app = express.Router();
 
@@ -143,6 +147,53 @@ app.get('/recoverfiles', async (req, res) => {
   if (req.header('Authorization') === config.run.ranking) {
     const data = await recoverRecFiles();
     res.json(data);
+  } else {
+    res.status(401);
+    res.send('Unauthorized');
+  }
+});
+
+// levelpack stats
+app.get('/levelpackstats/all', async (req, res) => {
+  if (req.header('Authorization') === config.run.ranking) {
+    try {
+      const eolOnly = parseInt(req.query.eolOnly, 10) || 0;
+      const results = await populateAllLevelPackStats(eolOnly);
+      res.json({ status: 'completed', results });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'Error processing all levelpack stats',
+        error: error.message,
+      });
+    }
+  } else {
+    res.status(401);
+    res.send('Unauthorized');
+  }
+});
+
+app.get('/levelpackstats/:identifier', async (req, res) => {
+  if (req.header('Authorization') === config.run.ranking) {
+    try {
+      const identifier = req.params.identifier;
+      const eolOnly = parseInt(req.query.eolOnly, 10) || 0;
+      // Check if identifier is a number (index) or string (name)
+      const byName = isNaN(identifier);
+      const finalIdentifier = byName ? identifier : parseInt(identifier, 10);
+      const result = await populateLevelPackStats(
+        finalIdentifier,
+        byName,
+        eolOnly,
+      );
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: 'Error processing levelpack stats',
+        error: error.message,
+      });
+    }
   } else {
     res.status(401);
     res.send('Unauthorized');

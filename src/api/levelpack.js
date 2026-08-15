@@ -456,7 +456,7 @@ const getRecords = async (
   return mapValues(groupBy(results, 'LevelIndex'), arr => arr[0]);
 };
 
-const getTimes = async (
+export const getTimes = async (
   LevelPackName,
   eolOnly = 0,
   Country,
@@ -651,7 +651,7 @@ const getLevelsByQueryAll = async (query, ShowLocked) => {
   return levels;
 };
 
-const totalTimes = (times, filters) => {
+export const totalTimes = (times, filters, includeCount = false) => {
   const tts = [];
   const kuskis = [];
   const teams = [];
@@ -722,13 +722,17 @@ const totalTimes = (times, filters) => {
   countries.sort((a, b) => a.name.localeCompare(b.name));
   if (filters) {
     return {
-      tts: tts.filter(x => x.count === nonExcludedLevelCount),
+      tts: includeCount
+        ? tts
+        : tts.filter(x => x.count === nonExcludedLevelCount),
       teams,
       countries,
       kuskis: kuskiFilter.sort((a, b) => a.Kuski.localeCompare(b.Kuski)),
     };
   }
-  return tts.filter(x => x.count === nonExcludedLevelCount);
+  return includeCount
+    ? tts
+    : tts.filter(x => x.count === nonExcludedLevelCount);
 };
 
 const sortPacks = (a, b) => {
@@ -742,7 +746,7 @@ const pointList = [
   40, 30, 25, 22, 20, 18, 16, 14, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
 ];
 
-const kinglist = times => {
+export const kinglist = times => {
   const points = [];
   const kuskis = [];
   forEach(times, level => {
