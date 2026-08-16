@@ -118,6 +118,7 @@ export const getTimes = async (LevelIndex, KuskiIndex, limit, LoggedIn = 0) => {
 
   if (personal) {
     attributes.push(
+      'KuskiIndex',
       'Finished',
       'BattleIndex',
       'MaxSpeed',
