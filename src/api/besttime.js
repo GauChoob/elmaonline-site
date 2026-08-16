@@ -106,16 +106,18 @@ const getLatest = async (KuskiIndex, limit, lev, from, to, UserId = 0) => {
       attributes: ['LevelName', 'Locked', 'Hidden', 'LongName'],
     },
   ];
+  const attributes = ['TimeIndex', 'Time', 'Driven', 'LevelIndex'];
   if (personal) {
     include.push({
       model: TimeFile,
       as: 'TimeFileData',
     });
+    attributes.push('KuskiIndex');
   }
   const query = {
     where,
     order: [['TimeIndex', 'DESC']],
-    attributes: ['TimeIndex', 'Time', 'Driven', 'LevelIndex'],
+    attributes,
     include,
     limit: parseInt(limit, 10) > 10000 ? 10000 : parseInt(limit, 10),
   };
