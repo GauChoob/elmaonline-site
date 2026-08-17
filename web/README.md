@@ -1,6 +1,6 @@
 # Elmaonline site web frontend
 
-React based frontend for the [elmaonline site](https://elma.online). The backend is found in the [elmaonline-site repo](https://github.com/elmadev/elmaonline-site).
+React based frontend for the [elmaonline site](https://elma.online). The backend is found in the [api folder](https://github.com/elmadev/elmaonline-site/tree/dev/api).
 
 - [test.elma.online](http://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
 - [elma.online](http://elma.online) This site is using the live database.
@@ -21,7 +21,7 @@ React based frontend for the [elmaonline site](https://elma.online). The backend
 3. Run `yarn` in terminal to install depedencies
 4. Run `yarn start` in terminal to start development server
 
-- Instead of connecting to the test server backend, if you want to run [elmaonline-site](https://github.com/elmadev/elmaonline-site) locally, run `yarn start:dev` instead.
+- Instead of connecting to the test server backend, if you want to run [elmaonline-site](https://github.com/elmadev/elmaonline-site/tree/dev/api) locally, run `yarn start:dev` instead.
 
 - Run `yarn build` in terminal to make a production build.
 
@@ -118,8 +118,4 @@ The config is set up to use a test database. Bear in mind the following:
 
 ## Communication
 
-Feel free to create issues/discussions here on github in order to discuss things related to the project. Unless it's specifically related to only frontend, issues and discussions should be made in the [elmaonline-site repo](https://github.com/elmadev/elmaonline-site/issues). You can also join the [elma discord](https://discord.gg/j5WMFC6) #developers channel to chat.
-
-When working on a feature make sure you assign yourself to the related issue so we avoid multiple people doing the same work.
-
-For major chances on big ticket features such as replays, battles, profile, levels (and code architecture) make sure you join the discussion first, there most likely is one already, and reach some kind of consensus. Of course some experimentation to aid the discussion is fine.
+Feel free to create issues/discussions here on github in order to discuss things related to the project. You can also join the [elma discord](https://discord.gg/j5WMFC6) #developers channel to chat.

@@ -1,6 +1,6 @@
 # elmaonline-site
 
-Node JS based backend for the [elmaonline site](https://elma.online). The frontend is found in the [elmaonline-web repo](https://github.com/elmadev/elmaonline-web).
+Node JS based backend for the [elmaonline site](https://elma.online). The frontend is found in the [web folder](https://github.com/elmadev/elmaonline-site/tree/dev/web).
 
 - [test.elma.online](http://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
 - [elma.online](http://elma.online) This site will be using the live database.
