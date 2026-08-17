@@ -24,6 +24,7 @@ import Upload from './upload.js';
 import Tag from './tag.js';
 import Notification from './notification.js';
 import LevelStats from './levelstats.js';
+import LevelPackStats from './levelpackstats.js';
 import Crippled from './crippled.js';
 import Recap from './recap.js';
 import LGR from './lgr.js';
@@ -59,6 +60,7 @@ router
   .use('/tag', Tag)
   .use('/notification', Notification)
   .use('/levelstats', LevelStats)
+  .use('/levelpackstats', LevelPackStats)
   .use('/crippled', Crippled)
   .use('/recap', Recap)
   .use('/taswr', TasWr)

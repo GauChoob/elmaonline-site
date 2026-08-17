@@ -62,6 +62,7 @@ import ReplayLog from './ReplayLog.js';
 import LGR from './LGR.js';
 import LGRTags from './LGRTags.js';
 import LGRComment from './LGRComment.js';
+import LevelPackStats from './LevelPackStats.js';
 
 Replay.belongsTo(Kuski, {
   foreignKey: 'DrivenBy',
@@ -462,6 +463,16 @@ LevelPackCollectionPack.belongsTo(LevelPack, {
   as: 'PackData',
 });
 
+LevelPackStats.belongsTo(LevelPack, {
+  foreignKey: 'LevelPackIndex',
+  as: 'LevelPackData',
+});
+
+LevelPackStats.belongsTo(Kuski, {
+  foreignKey: 'KuskiIndex',
+  as: 'KuskiData',
+});
+
 LGR.belongsTo(Kuski, {
   foreignKey: 'KuskiIndex',
   as: 'KuskiData',
@@ -644,4 +655,5 @@ export {
   Crippled,
   Recap,
   ReplayLog,
+  LevelPackStats,
 };
