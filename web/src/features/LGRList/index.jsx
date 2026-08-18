@@ -68,14 +68,14 @@ const LGRList = () => {
           style={{ alignSelf: 'center', marginRight: '12px' }}
           onChange={(ev, value) => setSettings({ sortBy: value })}
         >
-          <ToggleButton value="LGRName">
+          <ToggleButton title="Sort by name" value="LGRName">
             {settings.sortBy === 'LGRName' ? (
               <SortByAlphaIcon fontSize="small" />
             ) : (
               <SortByAlphaOutlinedIcon fontSize="small" />
             )}
           </ToggleButton>
-          <ToggleButton value="Downloads">
+          <ToggleButton title="Sort by downloads" value="Downloads">
             {settings.sortBy === 'Downloads' ? (
               <GetAppIcon fontSize="small" />
             ) : (
@@ -90,10 +90,10 @@ const LGRList = () => {
           style={{ alignSelf: 'center', marginRight: '12px' }}
           onChange={(ev, value) => setSettings({ grid: value })}
         >
-          <ToggleButton value={false}>
+          <ToggleButton title="List view" value={false}>
             <ListIcon fontSize="small" />
           </ToggleButton>
-          <ToggleButton value={true}>
+          <ToggleButton title="Thumbnail view" value={true}>
             <AppsIcon fontSize="small" />
           </ToggleButton>
         </ToggleButtonGroup>
