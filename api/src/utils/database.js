@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import moment from 'moment';
 import { Op } from 'sequelize';
 import config from '../config.js';
@@ -21,19 +22,19 @@ export function log(func, query, benchmark) {
     }
   }
 
-  const folder = '../events/dblog/';
+  const folder = path.resolve(process.cwd(), 'events', 'dblog');
   fs.mkdir(folder, { recursive: true }, err => {
     if (!err) {
       if (process.env.NODE_ENV === 'development') {
         fs.appendFile(
-          `${folder}${moment().format('YYYY-MM-DD')}.log`,
+          path.join(folder, `${moment().format('YYYY-MM-DD')}.log`),
           `${func}: ${benchmark} [${moment().format('HH:mm:ss')}] ${query}\r\n`,
           () => {},
         );
       }
       if (benchmark > 1000) {
         fs.appendFile(
-          `${folder}${moment().format('YYYY-MM-DD')}-slow.log`,
+          path.join(folder, `${moment().format('YYYY-MM-DD')}-slow.log`),
           `${func}: ${benchmark} [${moment().format('HH:mm:ss')}] ${query}\r\n`,
           () => {},
         );
