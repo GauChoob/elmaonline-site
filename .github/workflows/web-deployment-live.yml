@@ -1,4 +1,4 @@
-name: Build and Deploy live
+name: Build and deploy react to elma.online
 
 on:
   push:
@@ -42,4 +42,4 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: "web/build/*"
           target: "${{ secrets.SSH_BUILD_PATH }}"
-          strip_components: 1
+          strip_components: 2

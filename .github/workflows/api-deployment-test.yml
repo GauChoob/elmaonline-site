@@ -1,10 +1,9 @@
-name: Deployment to apitest.elma.online
+name: Deploy api to apitest.elma.online
 
 on:
   push:
     branches:
       - dev
-      - monorepo-fixes
     paths:
       - "api/**"
 
