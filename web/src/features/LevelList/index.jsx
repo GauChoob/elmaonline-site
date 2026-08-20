@@ -314,10 +314,10 @@ export default function LevelList({
               style={{ alignSelf: 'center', marginRight: '12px' }}
               onChange={(ev, value) => setSettings({ grid: value })}
             >
-              <ToggleButton value={false}>
+              <ToggleButton title="List view" value={false}>
                 <ListIcon fontSize="small" />
               </ToggleButton>
-              <ToggleButton value={true}>
+              <ToggleButton title="Thumbnail view" value={true}>
                 <AppsIcon fontSize="small" />
               </ToggleButton>
             </ToggleButtonGroup>
