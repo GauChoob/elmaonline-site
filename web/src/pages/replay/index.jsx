@@ -174,6 +174,11 @@ const Replay = () => {
     dlLink = linkArray[linkArray.length - 1];
   }
 
+  const shirtUrls =
+    replays.length > 0
+      ? replays.map(r => `${config.dlUrl}shirt/${r.DrivenByData?.KuskiIndex}`)
+      : [`${config.dlUrl}shirt/${replay.DrivenByData?.KuskiIndex}`];
+
   return (
     <Layout t={`rec - ${replay.RecFileName}`}>
       <PlayerContainer theater={theater}>
@@ -182,9 +187,7 @@ const Replay = () => {
             <Recplayer
               rec={link}
               lev={`${config.dlUrl}level/${replay.LevelIndex}`}
-              shirt={[
-                `${config.dlUrl}shirt/${replay.DrivenByData?.KuskiIndex}`,
-              ]}
+              shirt={shirtUrls}
               controls
             />
           )}
