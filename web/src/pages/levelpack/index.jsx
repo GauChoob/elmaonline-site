@@ -81,7 +81,7 @@ const LevelPack = () => {
     }
   }, [showLegacy]);
 
-  if (!isRehydrated || !levelPackInfo)
+  if (!isRehydrated || !levelPackInfo.LevelPackIndex)
     return (
       <Layout edge t={`Level pack - ${name}`}>
         <Loading />
