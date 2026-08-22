@@ -2,8 +2,8 @@
 
 React based frontend for the [elmaonline site](https://elma.online). The backend is found in the [api folder](https://github.com/elmadev/elmaonline-site/tree/dev/api).
 
-- [test.elma.online](http://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
-- [elma.online](http://elma.online) This site is using the live database.
+- [test.elma.online](https://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
+- [elma.online](https://elma.online) This site is using the live database.
 
 - [storybook.elma.online](https://storybook.elma.online) UI library of the components that exists in the code
 
@@ -12,7 +12,7 @@ React based frontend for the [elmaonline site](https://elma.online). The backend
 - **dev**
   - The primary branch to use while developing. Make all changes to this branch, preferably as pull requests. Test server uses this branch.
 - **master**
-  - This branch reflects the version currently deployed on [elma.online](http://elma.online), only people actually deploying will be pulling code to this.
+  - This branch reflects the version currently deployed on [elma.online](https://elma.online), only people actually deploying will be pulling code to this.
 
 ## Get started
 
