@@ -33,7 +33,7 @@ Node JS based backend for the [elmaonline site](https://elma.online). The fronte
 ## Tech stack
 
 - [Express](https://expressjs.com/) as the api framework
-- [sequelize](https://docs.sequelizejs.com/manual/tutorial/querying.html) for database querying
+- [sequelize](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/) for database querying
 - eslint and prettier for linting
 - nodemon for auto reloading server when you edit files
 
