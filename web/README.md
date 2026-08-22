@@ -2,8 +2,8 @@
 
 React based frontend for the [elmaonline site](https://elma.online). The backend is found in the [api folder](https://github.com/elmadev/elmaonline-site/tree/dev/api).
 
-- [test.elma.online](http://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
-- [elma.online](http://elma.online) This site is using the live database.
+- [test.elma.online](https://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
+- [elma.online](https://elma.online) This site is using the live database.
 
 - [storybook.elma.online](https://storybook.elma.online) UI library of the components that exists in the code
 
@@ -12,7 +12,7 @@ React based frontend for the [elmaonline site](https://elma.online). The backend
 - **dev**
   - The primary branch to use while developing. Make all changes to this branch, preferably as pull requests. Test server uses this branch.
 - **master**
-  - This branch reflects the version currently deployed on [elma.online](http://elma.online), only people actually deploying will be pulling code to this.
+  - This branch reflects the version currently deployed on [elma.online](https://elma.online), only people actually deploying will be pulling code to this.
 
 ## Get started
 
@@ -29,16 +29,16 @@ React based frontend for the [elmaonline site](https://elma.online). The backend
 
 ## Tech stack
 
-- React 18 using [vitejs](https://vitejs.dev/)
-- Styling with [styled-components](https://styled-components.com/) and [Material-UI](https://material-ui.com/)
-- Navigation using [@tanstack-router](https://tanstack.com/router/)
-- Simplified redux using [easy-peasy](https://easy-peasy.vercel.app/)
-- API calls using [apisauce](https://github.com/infinitered/apisauce) built on axios and [tanstack query](https://tanstack.com/query/)
+- React 18 using [vitejs](https://vite.dev/)
+- Styling with [styled-components](https://styled-components.com/) and [Material-UI](https://mui.com/material-ui/)
+- Navigation using [@tanstack-router](https://tanstack.com/router/latest)
+- Simplified redux using [easy-peasy](https://easy-peasy.dev/)
+- API calls using [apisauce](https://github.com/infinitered/apisauce) built on axios and [tanstack query](https://tanstack.com/query/latest)
 - Forms powered by [formal-web](https://www.npmjs.com/package/@kevinwolf/formal-web)
 - Basic helper tools such as lodash, date-fns, nanoid
 - Page and component generation from templates using plop (`yarn g`)
 
-If you don't know react it's worth checking out the official [tutorial](https://react.dev/learn). Rest of the stack should be pretty easy to learn. If you are new to any of them, check out these quick introductions to the most important ones: [easy-peasy](https://easy-peasy.vercel.app/docs/tutorials/quick-start.html), [styled-components](https://styled-components.com/docs/basics#getting-started), [tanstack router](https://tanstack.com/router/latest/docs/framework/react/quick-start#using-code-based-route-configuration), [tanstack query](https://tanstack.com/query/latest/docs/framework/react/quick-start) and [formal-web](https://www.npmjs.com/package/@kevinwolf/formal-web#usage).
+If you don't know react it's worth checking out the official [tutorial](https://react.dev/learn). Rest of the stack should be pretty easy to learn. If you are new to any of them, check out these quick introductions to the most important ones: [easy-peasy](https://easy-peasy.dev/docs/tutorials/quick-start.html), [styled-components](https://styled-components.com/docs/basics#getting-started), [tanstack router](https://tanstack.com/router/latest/docs/quick-start#code-based-route-configuration), [tanstack query](https://tanstack.com/query/latest/docs/framework/react/quick-start) and [formal-web](https://www.npmjs.com/package/@kevinwolf/formal-web#usage).
 
 ## Folder structure
 
@@ -74,7 +74,7 @@ Run `yarn g` in terminal and follow the prompts
 - Features will be built up of components to create the UI and maintain some state in easy-peasy and/or call the api. Optimally you should be able to use layout components like Grid, Row, Column, Paper, Header etc. to built up basic layouts and not rely on creating new css when making a feature.
 - Pages will be built mostly of features and some layout components to comprise a full screen.
 
-Use `yarn commit` or follow [guidelines](https://github.com/elmadev/elmaonline-site/blob/dev/docs/contributing.md) when committing code to maintain consistent commit messages.
+Use `yarn commit` or follow [guidelines](https://github.com/elmadev/elmaonline-site/blob/dev/api/CONTRIBUTING.md) when committing code to maintain consistent commit messages.
 
 ### Pages
 

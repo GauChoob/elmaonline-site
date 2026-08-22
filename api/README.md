@@ -1,16 +1,16 @@
-# elmaonline-site
+# Elmaonline site backend
 
 Node JS based backend for the [elmaonline site](https://elma.online). The frontend is found in the [web folder](https://github.com/elmadev/elmaonline-site/tree/dev/web).
 
-- [test.elma.online](http://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
-- [elma.online](http://elma.online) This site will be using the live database.
+- [test.elma.online](https://test.elma.online) New features will be tested here first, this site uses a secondary copy of the database, so you can mess up as much as you want here, and nothing you do here will be saved on the real site.
+- [elma.online](https://elma.online) This site will be using the live database.
 
 ## Branches
 
 - **dev**
   - The primary branch to use while developing. Make all changes to this branch, preferably as pull requests. Test server uses this branch, and will automatically pull via github actions.
 - **master**
-  - This branch reflects the version currently deployed on [elma.online](http://elma.online), which will automatically pull via github actions.
+  - This branch reflects the version currently deployed on [elma.online](https://elma.online), which will automatically pull via github actions.
 
 ## Get started
 
@@ -32,8 +32,8 @@ Node JS based backend for the [elmaonline site](https://elma.online). The fronte
 
 ## Tech stack
 
-- [Express](http://expressjs.com/) as the api framework
-- [sequelize](http://docs.sequelizejs.com/manual/tutorial/querying.html) for database querying
+- [Express](https://expressjs.com/) as the api framework
+- [sequelize](https://sequelize.org/docs/v6/core-concepts/model-querying-basics/) for database querying
 - eslint and prettier for linting
 - nodemon for auto reloading server when you edit files
 
