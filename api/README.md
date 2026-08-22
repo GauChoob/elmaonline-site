@@ -1,4 +1,4 @@
-# elmaonline-site
+# Elmaonline site backend
 
 Node JS based backend for the [elmaonline site](https://elma.online). The frontend is found in the [web folder](https://github.com/elmadev/elmaonline-site/tree/dev/web).
 
